@@ -213,6 +213,7 @@ router.get("/faculty-events", authenticateToken, async (req, res) => {
       faculty: userFaculty,
       userId: { $ne: userIdObjectId }, 
       hodApprovalStatus: "approved",
+      deanApprovalStatus: "pending",
     });
 
     // Add creator role to each event
@@ -245,6 +246,7 @@ router.get("/vc-events", authenticateToken, async (req, res) => {
     const events = await Event.find({
       hodApprovalStatus: "approved",
       deanApprovalStatus: "approved",
+      vcApprovalStatus: "pending",
       userId: { $ne: userIdObjectId }, 
     });
 
